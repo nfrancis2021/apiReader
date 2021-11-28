@@ -1,7 +1,9 @@
 import requests as req
 import pandas as pd
 
+#calling the requests.get() method
 response = req.get("https://api.publicapis.org/entries")
+#get the data back in json format
 resp = response.json()
 
 #declaring an empty dataframe
