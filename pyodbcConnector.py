@@ -24,15 +24,16 @@ password = '<Password>'
 cnxn = pcon.connect('DRIVER={SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
 cursor = cnxn.cursor()
 for index, row in df.iterrows():
-    cursor.execute("INSERT INTO dbo.APIEntries (API, Description, Auth, HTTPS, Cors, Link, Category) values(?,?,?,?,?,?,?)", row.API, row.Description, row.Auth, row.HTTPS, row.Cors, row.Link, row.Category)
+    cursor.execute("INSERT INTO dbo.APIEntries (API, Description, Auth, HTTPS, Cors, Link, Category) values(?,?,?,?,?,?,?)"
+                   , row.API, row.Description, row.Auth, row.HTTPS, row.Cors, row.Link, row.Category)
 cnxn.commit()
 cursor.close()
+
+#record end time
+end = time.time()
+print("Time of Execution:", end - start)
 
 #connecting to database with Windows authentication
 # server = '<Server Name>'
 # database = '<Database Name>'
 # cnxn = pcon.connect('DRIVER={SQL Server};SERVER='+server+';DATABASE='+database)
-
-#record end time
-end = time.time()
-print("Time of Execution:", end - start)
