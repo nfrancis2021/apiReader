@@ -36,4 +36,4 @@ print("Time of Execution:", end - start)
 #connecting to database with Windows authentication
 # server = '<Server Name>'
 # database = '<Database Name>'
-# cnxn = pcon.connect('DRIVER={SQL Server};SERVER='+server+';DATABASE='+database)
+# cnxn = pcon.connect('DRIVER={SQL Sever};SERVER='+server+';DATABASE='+database)
