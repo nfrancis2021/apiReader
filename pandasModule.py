@@ -1,20 +1,13 @@
 import requests as req
 import pandas as pd
 
-#calling the requests.get() method
+
 response = req.get("https://api.publicapis.org/entries")
-#get the data back in json format
 resp = response.json()
+data = resp["entries"]
 
-#declaring an empty dataframe
-df = pd.DataFrame()
-print(df.empty) #check to see if df is empty
-
-#appending data to the dataframe
-for num in resp["entries"]:
-    df1 = pd.DataFrame(num,index=[0])
-    df = pd.concat([df,df1])
-
+#reading a list of dictionaries into a dataframe
+df = pd.DataFrame.from_dict(data)
 #display option setting for pandas dataframe
 pd.set_option('display.max_columns', None)
 print(df)
