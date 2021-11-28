@@ -1,6 +1,7 @@
 import requests as req
 import pandas as pd
 import pyodbc as pcon
+import time
 
 response = req.get("https://api.publicapis.org/entries")
 resp = response.json()
@@ -13,7 +14,8 @@ for num in resp["entries"]:
     df1 = pd.DataFrame(num,index=[0])
     df = pd.concat([df,df1])
 
-
+#record start time
+start = time.time()
 #inserting data into database with SQL authentication
 server = '<Server Name>'
 database = '<Database Name>'
@@ -27,6 +29,10 @@ cnxn.commit()
 cursor.close()
 
 #connecting to database with Windows authentication
-server = '<Server Name>'
-database = '<Database Name>'
-cnxn = pcon.connect('DRIVER={SQL Server};SERVER='+server+';DATABASE='+database)
+# server = '<Server Name>'
+# database = '<Database Name>'
+# cnxn = pcon.connect('DRIVER={SQL Server};SERVER='+server+';DATABASE='+database)
+
+#record end time
+end = time.time()
+print("Time of Execution:", end - start)
