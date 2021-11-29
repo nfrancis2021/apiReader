@@ -1,9 +1,11 @@
 import requests as req
 import pandas as pd
 
-
+#calling request.get()
 response = req.get("https://api.publicapis.org/entries")
+#get the data back in json format
 resp = response.json()
+#assigining a list of dicts into a variable
 data = resp["entries"]
 
 #reading a list of dictionaries into a dataframe
