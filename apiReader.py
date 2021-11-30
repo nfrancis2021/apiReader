@@ -3,6 +3,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 import time
 import sys
+import pywin32
 
 #apiendpoint = sys.argv[0]
 servername = sys.argv[1]
@@ -26,7 +27,7 @@ database = '<Databasename>'
 driver = 'ODBC Driver 17 for SQL Server'
 dbconnection = f'mssql://@{server}/{database}?driver={driver}'
 engine = create_engine(dbconnection, fast_executemany=True)
-df.to_sql('APIEntries', engine, schema='dbo', if_exists='append', index=False)
+df.to_sql('<Table Name>', engine, schema='<Schema Name>', if_exists='append', index=False)
 
 # #record end time
 end = time.time()
